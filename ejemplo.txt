@@ -1,0 +1,20 @@
+# Ejemplo1 - Karina Ortega
+#Estructura de control
+#Arreglo
+arreglo = [2,4,6,10]
+puts  arreglo[2]
+
+#Se definen las variables num1 y num2
+num1 = 20
+num2 = 5
+#Estructura de control IF-ELSE
+if  (num1 > 18) && (num1<50)
+    puts "adulto"
+else
+    puts "no es adulto"
+end
+
+if num2 == 5
+   puts nombre
+else
+  puts "bye"
