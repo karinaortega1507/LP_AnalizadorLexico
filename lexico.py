@@ -21,9 +21,8 @@ tokens = (
     'COMMENT',
     'COMMA',
     'OR',
-    'RANGE',
-    'LESSEQUAL',
-    'MAjOREQUAL'
+    'RANGE'
+    
 
 )
 
@@ -33,7 +32,10 @@ reserved_words = {
     'else': 'ELSE',
     'puts': 'PUTS',
     'for':'FOR',
-    'in':'IN'    
+    'in':'IN',
+    'true':'TRUE',
+    'false':'FALSE'
+        
 }
 
 tokens = tokens + tuple(reserved_words.values())
@@ -56,8 +58,7 @@ t_ASIGN = r'={1}'
 t_AND = r'\&\&'
 t_OR=r'\|\|'
 t_RANGE=r'\.\.'
-t_LESSEQUAL=r'\<='
-t_MAjOREQUAL=r'\>='
+
 
 
 # A regular expression rule with some action code

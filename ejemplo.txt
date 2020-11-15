@@ -21,11 +21,16 @@ else
 
 #Jocelyn Chicaiza
 #Estructura de control FOR 
+
 for i in(0..9)
-    if(i!=5 || i<=3)
-        puts i
-    end
+    puts i
 end
+
+#Diferente 
+if (5!=20)==true
+puts "Correcto"
+end
+
 
 
 
