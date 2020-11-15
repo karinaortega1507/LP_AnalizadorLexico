@@ -15,6 +15,17 @@ else
 end
 
 if num2 == 5
-   puts nombre
+    puts nombre
 else
-  puts "bye"
+    puts "bye"
+
+#Jocelyn Chicaiza
+#Estructura de control FOR 
+for i in(0..9)
+    if(i!=5 || i<=3)
+        puts i
+    end
+end
+
+
+

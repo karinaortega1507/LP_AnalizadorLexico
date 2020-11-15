@@ -14,18 +14,26 @@ tokens = (
     'MENORQUE',
     'ASIGN',
     'EQUAL',
+    'DIFFERENT',
     'AND',
     'ID',
     'TEXT',
     'COMMENT',
-    'COMMA'
+    'COMMA',
+    'OR',
+    'RANGE',
+    'LESSEQUAL',
+    'MAjOREQUAL'
+
 )
 
 reserved_words = {
     'end': "END",
     'if': 'IF',
     'else': 'ELSE',
-    'puts': "PUTS"
+    'puts': 'PUTS',
+    'for':'FOR',
+    'in':'IN'    
 }
 
 tokens = tokens + tuple(reserved_words.values())
@@ -43,8 +51,13 @@ t_RBRACK = r'\]'
 t_MAYORQUE = r'\>'
 t_MENORQUE = r'\<'
 t_EQUAL = r'={2}'
+t_DIFFERENT=r'!='
 t_ASIGN = r'={1}'
 t_AND = r'\&\&'
+t_OR=r'\|\|'
+t_RANGE=r'\.\.'
+t_LESSEQUAL=r'\<='
+t_MAjOREQUAL=r'\>='
 
 
 # A regular expression rule with some action code
@@ -106,6 +119,4 @@ for linea in archivo:
     analizar(linea)
     if len(linea)==0:
         break
-
-
 
