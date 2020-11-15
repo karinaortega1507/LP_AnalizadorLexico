@@ -20,7 +20,7 @@ else
     puts "bye"
 
 #Jocelyn Chicaiza
-#Estructura de control FOR 
+#Estructura de control FOR y uso de range
 
 for i in(0..9)
     puts i
