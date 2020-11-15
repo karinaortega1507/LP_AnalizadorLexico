@@ -1,5 +1,5 @@
 # Ejemplo1 - Karina Ortega
-#Estructura de control
+#Estructura de datos
 #Arreglo
 arreglo = [2,4,6,10]
 puts  arreglo[2]
