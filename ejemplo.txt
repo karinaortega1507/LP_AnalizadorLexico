@@ -36,5 +36,17 @@ if (10 > 5) || (5 < 5)
     return false
 end
 
+#Edwin Ullaguari L.
+class prueba
+Person = struct.new(:name, :age)
+$x=1
+class mamifero
+	def respira
+		puts "inhala y exhala"
+	end
+end
 
+num=5
+mun1=6
+num>=num1
 

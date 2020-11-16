@@ -21,7 +21,16 @@ tokens = (
     'COMMENT',
     'COMMA',
     'OR',
-    'RANGE'
+    'RANGE',
+    'DECIMAL',#
+    'ARROW',
+    'GEQT',
+    'LEQT',
+    'DOSPUNTOS',
+    'ATRIBUTE',
+    'SYMBOL',
+    'TEXTO',
+    'DOT',
     
 
 )
@@ -34,7 +43,12 @@ reserved_words = {
     'for':'FOR',
     'in':'IN',
     'true':'TRUE',
-    'false':'FALSE'
+    'false':'FALSE',
+    'class':'CLASS',
+    'struct':'STRUCT',
+    'new':'NEW',
+    'def':'DEF',
+    'puts':'PUTS'
         
 }
 
@@ -58,10 +72,23 @@ t_ASIGN = r'={1}'
 t_AND = r'\&\&'
 t_OR=r'\|\|'
 t_RANGE=r'\.\.'
+t_ARROW=r'=>'
+t_GEQT=r'>='
+t_LEQT=r'<='
+t_DOSPUNTOS=r'\:'
+t_ATRIBUTE=r'\:[a-z]+'
+t_SYMBOL=r'^[$]{0,1}[a-z|A-Z][a-zA-Z0-9]*'
+t_TEXTO=r"(\'[\w\s\.]*\'|\"[\w\s\.]*\")"
+t_DOT=r'\.'
 
 
 
 # A regular expression rule with some action code
+
+def t_DECIMAL(t):
+    r'\d+\.\d+'
+    t.value = float(t.value)
+
 def t_NUMBER(t):
     r'\d+'
     t.value = int(t.value)
@@ -69,8 +96,11 @@ def t_NUMBER(t):
 
 
 def t_ID(t):
-    r'[a-z][a-zA-Z_0-9]*'
-    t.type = reserved_words.get(t.value, 'ID')
+    r'([a-z\-0-9]+)'
+    if t.value in reserved_words:
+        t.type = reserved_words[t.value]
+    else:
+        t.type = 'SYMBOL'
     return t
 
 
@@ -87,7 +117,9 @@ def t_COMMENT(t):
 
 
 def t_error(t):
-    print("IlLegal caracter '%s'" % t.value[0])
+    #print("IlLegal caracter '%s'" % t.value[0])
+    estado="** Token no valido en la Linea {:4} Valor {:16} Posicion {:4}".format(str(t.lineno), str(t.value), str(t.lexpos))
+    print(estado)
     t.lexer.skip(1)
 
 
