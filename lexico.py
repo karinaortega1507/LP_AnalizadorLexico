@@ -39,7 +39,6 @@ reserved_words = {
     'end': "END",
     'if': 'IF',
     'else': 'ELSE',
-    'puts': 'PUTS',
     'for':'FOR',
     'in':'IN',
     'true':'TRUE',
@@ -115,6 +114,8 @@ def t_COMMENT(t):
     t.type = reserved_words.get(t.value, 'COMMENT')
     return t
 
+t_ignore = ' \t'
+
 
 def t_error(t):
     #print("IlLegal caracter '%s'" % t.value[0])
@@ -128,7 +129,7 @@ def t_newline(t):
     t.lexer.lineno += len(t.value)
 
 
-t_ignore = ' \t'
+
 
 
 # Build the lexer
