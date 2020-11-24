@@ -78,6 +78,7 @@ def p_comparacion(p):
                    | NUMBER MENORQUE NUMBER'''
     p[0]= 'comparacion'
 
+#Inicia Edwin
 def p_expresion_booleana(p):
     '''
     expresion   :   expresion AND expresion
@@ -99,6 +100,42 @@ def p_expresion_booleana(p):
         p[0] = p[2] or p[4]
     elif p[3] == "not":
         p[0] =  p[2] is not p[4]
+
+def p_expresion_logicas(t):
+    '''
+    expresion   :  expresion MENORQUE expresion
+                |  expresion MAYORQUE expresion
+                |  expresion LEQT expresion
+                |   expresion GEQT expresion
+                |   expresion EQUAL expresion
+                |   expresion DIFER expresion
+                |  LPAREN expresion RPAREN MENORQUE LPAREN expresion RPAREN
+                |  LPAREN expresion RPAREN MAYORQUE LPAREN expresion RPAREN
+                |  LPAREN expresion RPAREN LEQT LPAREN expresion RPAREN
+                |  LPAREN  expresion RPAREN GEQT LPAREN expresion RPAREN
+                |  LPAREN  expresion RPAREN ASIGN LPAREN expresion RPAREN
+                |  LPAREN  expresion RPAREN DIFER LPAREN expresion RPAREN
+    '''
+    if t[2] == "<": t[0] = t[1] < t[3]
+    elif t[2] == ">": t[0] = t[1] > t[3]
+    elif t[2] == "<=": t[0] = t[1] <= t[3]
+    elif t[2] == ">=": t[0] = t[1] >= t[3]
+    elif t[2] == "==": t[0] = t[1] is t[3]
+    elif t[2] == "!=": t[0] = t[1] != t[3]
+    elif t[3] == "<":
+        t[0] = t[2] < t[4]
+    elif t[2] == ">":
+        t[0] = t[2] > t[4]
+    elif t[3] == "<=":
+        t[0] = t[2] <= t[4]
+    elif t[3] == ">=":
+        t[0] = t[2] >= t[4]
+    elif t[3] == "==":
+        t[0] = t[2] is t[4]
+    elif t[3] == "!=":
+        t[0] = t[2] != t[4]
+
+#fin Edwin
 
 def p_comentario(p):
     '''comentario : COMMENT'''

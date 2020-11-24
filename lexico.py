@@ -32,7 +32,7 @@ tokens = (
     'SYMBOL',
     'TEXTO',
     'DOT',
-    
+    'DIFER',
 
 )
 
@@ -73,16 +73,17 @@ t_EQUAL = r'={2}'
 t_DIFFERENT=r'!='
 t_ASIGN = r'={1}'
 t_AND = r'\&\&'
-t_OR=r'\|\|'
-t_RANGE=r'\.\.'
-t_ARROW=r'=>'
-t_GEQT=r'>='
-t_LEQT=r'<='
-t_DOSPUNTOS=r'\:'
-t_ATRIBUTE=r'\:[a-z]+'
-t_SYMBOL=r'^[$]{0,1}[a-z|A-Z][a-zA-Z0-9]*'
-t_TEXTO=r"(\'[\w\s\.]*\'|\"[\w\s\.]*\")"
-t_DOT=r'\.'
+t_OR= r'\|\|'
+t_RANGE= r'\.\.'
+t_ARROW= r'=>'
+t_GEQT= r'\>='
+t_LEQT= r'\<='
+t_DOSPUNTOS= r'\:'
+t_ATRIBUTE= r'\:[a-z]+'
+t_SYMBOL= r'^[$]{0,1}[a-z|A-Z][a-zA-Z0-9]*'
+t_TEXTO= r"(\'[\w\s\.]*\'|\"[\w\s\.]*\")"
+t_DOT= r'\.'
+t_DIFER = r'!='
 
 
 
