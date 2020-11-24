@@ -1,5 +1,5 @@
 # se importa el módulo yacc
-import ply.yacc as yacc
+import ply.yacc as yacc 
 
 # se importa nuestra lista de tokens
 from lexico import tokens
@@ -63,6 +63,11 @@ def p_impresion_puts(p):
                       | PUTS SYMBOL'''
     p[0] = 'impresion_puts'
 
+def p_comparacion(p):
+    '''comparacion : NUMBER EQUAL NUMBER
+                   | NUMBER MAYORQUE NUMBER
+                   | NUMBER MENORQUE NUMBER'''
+    p[0]= 'comparacion'
 
 def p_comentario(p):
     '''comentario : COMMENT'''
