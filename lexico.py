@@ -48,7 +48,10 @@ reserved_words = {
     'struct':'STRUCT',
     'new':'NEW',
     'def':'DEF',
-    'puts':'PUTS'
+    'puts':'PUTS',
+    'not' : "NOT",
+    'or' : "OR",
+    'and' : "AND"
         
 }
 

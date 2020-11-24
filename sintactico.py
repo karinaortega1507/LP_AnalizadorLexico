@@ -69,6 +69,28 @@ def p_comparacion(p):
                    | NUMBER MENORQUE NUMBER'''
     p[0]= 'comparacion'
 
+def p_expresion_booleana(p):
+    '''
+    expresion   :   expresion AND expresion
+                |   expresion OR expresion
+                |   expresion NOT expresion
+                |  LPAREN expresion AND expresion RPAREN
+                |  LPAREN expresion OR expresion RPAREN
+                |  LPAREN expresion NOT expresion RPAREN
+    '''
+    if p[2] == "&&":
+        p[0] = p[1] and p[3]
+    elif p[2] == "||":
+        p[0] = p[1] or p[3]
+    elif p[2] == "not":
+        p[0] =  p[1] is not p[3]
+    elif p[3] == "&&":
+        p[0] = p[2] and p[4]
+    elif p[3] == "||":
+        p[0] = p[2] or p[4]
+    elif p[3] == "not":
+        p[0] =  p[2] is not p[4]
+
 def p_comentario(p):
     '''comentario : COMMENT'''
     p[0] = 'comentario'
