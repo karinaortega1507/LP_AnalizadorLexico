@@ -29,7 +29,8 @@ def p_declaracion(p):
 def p_expresion(p):
     '''expresion : comentario
                  | impresion_puts
-                 | expresion_valor'''
+                 | expresion_valor
+                 | estructura_control'''
     p[0] = p[1]
 
 
@@ -62,6 +63,14 @@ def p_impresion_puts(p):
                       | PUTS NUMBER
                       | PUTS SYMBOL'''
     p[0] = 'impresion_puts'
+
+def p_estructura_control(p):
+  ''' estructura_control : bloque_if'''
+  p[0]= 'estructura_control'
+
+def p_bloque_if(p):
+    '''bloque_if : IF comparacion expresion END'''
+    p[0]='bloque_if'
 
 def p_comparacion(p):
     '''comparacion : NUMBER EQUAL NUMBER
