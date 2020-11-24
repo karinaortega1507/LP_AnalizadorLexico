@@ -64,19 +64,32 @@ def p_impresion_puts(p):
                       | PUTS SYMBOL'''
     p[0] = 'impresion_puts'
 
+
+#Inicia Jocelyn 
+
 def p_estructura_control(p):
   ''' estructura_control : bloque_if'''
   p[0]= 'estructura_control'
 
 def p_bloque_if(p):
-    '''bloque_if : IF comparacion expresion END'''
+    '''bloque_if : IF boolean sentencia END
+                 | IF comparacion sentencia END
+                 | IF comparacion EQUAL boolean sentencia END '''
     p[0]='bloque_if'
+
+def p_boolean(p):
+    ''' boolean : FALSE
+                | TRUE
+                '''
+    p[0]= 'boolean'
 
 def p_comparacion(p):
     '''comparacion : NUMBER EQUAL NUMBER
                    | NUMBER MAYORQUE NUMBER
                    | NUMBER MENORQUE NUMBER'''
     p[0]= 'comparacion'
+
+#fin Jocelyn
 
 #Inicia Edwin
 def p_expresion_booleana(p):
