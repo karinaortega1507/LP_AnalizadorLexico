@@ -4,7 +4,7 @@ import ply.yacc as yacc
 # se importa nuestra lista de tokens
 from lexico import tokens
 
-
+#Inicia Karina Ortega
 # se define una línea de código
 def p_sentencia(p):
     '''sentencia : expresion
@@ -63,7 +63,7 @@ def p_impresion_puts(p):
                       | PUTS NUMBER
                       | PUTS SYMBOL'''
     p[0] = 'impresion_puts'
-
+#Finaliza karina Ortega
 
 #Inicia Jocelyn 
 
