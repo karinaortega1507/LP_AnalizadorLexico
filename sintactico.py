@@ -68,14 +68,20 @@ def p_impresion_puts(p):
 #Inicia Jocelyn 
 
 def p_estructura_control(p):
-  ''' estructura_control : bloque_if'''
+  ''' estructura_control : bloque_if END
+                         | bloque_if else END
+                         | bloque_for'''
   p[0]= 'estructura_control'
 
 def p_bloque_if(p):
-    '''bloque_if : IF boolean sentencia END
-                 | IF comparacion sentencia END
-                 | IF comparacion EQUAL boolean sentencia END '''
+    '''bloque_if : IF boolean sentencia
+                 | IF comparacion sentencia
+                 | IF comparacion EQUAL boolean sentencia '''
     p[0]='bloque_if'
+
+def p_else(p):
+    'else : ELSE sentencia'
+    p[0]= 'else'
 
 def p_boolean(p):
     ''' boolean : FALSE
@@ -88,6 +94,13 @@ def p_comparacion(p):
                    | NUMBER MAYORQUE NUMBER
                    | NUMBER MENORQUE NUMBER'''
     p[0]= 'comparacion'
+
+def p_bloque_for(p):
+    '''bloque_for : FOR SYMBOL IN rango sentencia END'''
+
+def p_rango(p):
+    'rango : LPAREN NUMBER RANGE NUMBER RPAREN'
+    p[0]= 'rango'
 
 #fin Jocelyn
 
