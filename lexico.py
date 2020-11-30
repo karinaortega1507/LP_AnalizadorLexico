@@ -33,6 +33,8 @@ tokens = (
     'TEXTO',
     'DOT',
     'DIFER',
+    'LKEY',
+    'RKEY'
 
 )
 
@@ -40,6 +42,7 @@ reserved_words = {
     'end': "END",
     'if': 'IF',
     'else': 'ELSE',
+    'while':'WHILE',
     'for':'FOR',
     'in':'IN',
     'true':'TRUE',
@@ -49,6 +52,7 @@ reserved_words = {
     'new':'NEW',
     'def':'DEF',
     'puts':'PUTS',
+    'gets':'GETS',
     'not' : "NOT",
     'or' : "OR",
     'and' : "AND"
@@ -84,6 +88,8 @@ t_SYMBOL= r'^[$]{0,1}[a-z|A-Z][a-zA-Z0-9]*'
 t_TEXTO= r"(\'[\w\s\.]*\'|\"[\w\s\.]*\")"
 t_DOT= r'\.'
 t_DIFER = r'!='
+t_LKEY = r'{'
+t_RKEY =r'}'
 
 
 

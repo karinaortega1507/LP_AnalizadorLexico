@@ -4,6 +4,7 @@ import ply.yacc as yacc
 # se importa nuestra lista de tokens
 from lexico import tokens
 
+
 #Inicia Karina Ortega
 # se define una línea de código
 def p_sentencia(p):
@@ -41,7 +42,8 @@ def p_expresion_valor(p):
 
 
 def p_asignacion_estructuras(p):
-    '''asignacion_estructuras : SYMBOL ASIGN estructura_array'''
+    '''asignacion_estructuras : SYMBOL ASIGN estructura_array
+                              | SYMBOL ASIGN estructura_hash'''
     p[0] = 'asignacion_estructuras'
 
 
@@ -65,8 +67,7 @@ def p_impresion_puts(p):
     p[0] = 'impresion_puts'
 #Finaliza karina Ortega
 
-#Inicia Jocelyn 
-
+#Inicia Jocelyn
 def p_estructura_control(p):
   ''' estructura_control : bloque_if END
                          | bloque_if else END
@@ -101,6 +102,14 @@ def p_bloque_for(p):
 def p_rango(p):
     'rango : LPAREN NUMBER RANGE NUMBER RPAREN'
     p[0]= 'rango'
+
+def p_estructura_hash(p):
+    '''estructura_hash :  LKEY valor_hash RKEY'''
+    p[0] = 'estructura_hash'
+
+def p_valor_hash(p):
+    '''valor_hash : NUMBER '''
+    #Completar hash
 
 #fin Jocelyn
 

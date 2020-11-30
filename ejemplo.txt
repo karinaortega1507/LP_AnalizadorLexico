@@ -36,6 +36,13 @@ if (10 > 5) || (5 < 5)
     return false
 end
 
+#while
+i=0
+while i<10
+puts "hola"
+i+=1
+end
+
 #Edwin Ullaguari L.
 class prueba
 Person = struct.new(:name, :age)
@@ -49,4 +56,8 @@ end
 num=5
 mun1=6
 num>=num1
+
+
+alumno = {"nombre" => "Carlos",
+"apellido" => "Lopez", "edad" => 22}
 
