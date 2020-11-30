@@ -53,13 +53,14 @@ reserved_words = {
     'def': 'DEF',
     'puts': 'PUTS',
     'gets': 'GETS',
-    'not': "NOT",
-    'or': "OR",
-    'and': "AND"
+    'not': "NOT"
+    #'or': "OR",
+    #'and': "AND"
         
 }
 
 tokens = tokens + tuple(reserved_words.values())
+
 
 # Regular expression rules for simple tokens
 t_PLUS = r'\+'
@@ -158,7 +159,7 @@ def analizar(data):
             break  # No more input
         print(tok)
 
-
+'''
 archivo = open("ejemplo.txt")
 for linea in archivo:
     print(">>"+linea)
@@ -166,3 +167,4 @@ for linea in archivo:
     if len(linea)==0:
         break
 
+'''
