@@ -14,6 +14,7 @@ else
     puts "no es adulto"
 end
 
+
 if num2 == 5
     puts nombre
 else
