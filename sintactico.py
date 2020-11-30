@@ -65,7 +65,7 @@ def p_impresion_puts(p):
                       | PUTS SYMBOL
                       | PUTS SYMBOL estructura_array'''
     p[0] = 'impresion_puts'
-#Finaliza karina Ortega
+
 
 
 #Inicia Jocelyn
@@ -82,6 +82,7 @@ def p_bloque_if(p):
                  | IF LPAREN comparacion RPAREN AND LPAREN comparacion RPAREN
                  | IF comparacion OR comparacion
                  | IF LPAREN comparacion RPAREN OR LPAREN comparacion RPAREN
+                 | ELSE
                  | ELSE comparacion
                  | ELSE LPAREN comparacion RPAREN
                  | ELSE LPAREN comparacion RPAREN AND LPAREN comparacion RPAREN
@@ -126,6 +127,8 @@ def p_estructura_hash(p):
 def p_valor_hash(p):
     '''valor_hash : NUMBER '''
     #Completar hash
+
+#Finaliza karina Ortega
 
 #fin Jocelyn
 
