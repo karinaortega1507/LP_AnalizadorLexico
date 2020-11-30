@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Analizador</class>
+ <widget class="QWidget" name="Analizador">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>778</width>
+    <height>353</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="toolTip">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Analizador de Código_LP&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">selection-background-color: rgb(223, 208, 255);</string>
+  </property>
+  <widget class="QPushButton" name="btnLexic">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>190</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Léxico</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="cajaCodigo">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>150</y>
+     <width>201</width>
+     <height>151</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="tittle">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>20</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 10pt &quot;Tahoma&quot;;
+font: 75 12pt &quot;Tahoma&quot;;
+font: 75 8pt &quot;MS Shell Dlg 2&quot;;
+font: 16pt &quot;Tahoma&quot;;
+font: 75 8pt &quot;MS Shell Dlg 2&quot;;
+font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Analizador de código</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelIngreseCodigo">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>100</y>
+     <width>191</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 8pt &quot;Tahoma&quot;;
+border-bottom-color: rgb(85, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>Ingrese su código para analizar aquí</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelOpciones">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>140</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 10pt &quot;Tahoma&quot;;
+font: 75 9pt &quot;Arial Narrow&quot;;
+font: 8pt &quot;Tahoma&quot;;
+font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Seleccione una opción para analizar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnSintact">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>230</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sintático</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelResultados">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>100</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 10pt &quot;Tahoma&quot;;
+font: 8pt &quot;Tahoma&quot;;
+font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Los resultados se muestran a continuación</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnAnalizerNewCode">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>300</y>
+     <width>191</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Analizar nuevo código</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>513</x>
+     <y>160</y>
+     <width>231</width>
+     <height>141</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>cajaCodigo</tabstop>
+  <tabstop>btnLexic</tabstop>
+  <tabstop>btnSintact</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
