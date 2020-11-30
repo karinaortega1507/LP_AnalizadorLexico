@@ -23,7 +23,7 @@ tokens = (
     'COMMA',
     'OR',
     'RANGE',
-    'DECIMAL',#
+    'DECIMAL',
     'ARROW',
     'GEQT',
     'LEQT',
@@ -42,20 +42,20 @@ reserved_words = {
     'end': "END",
     'if': 'IF',
     'else': 'ELSE',
-    'while':'WHILE',
-    'for':'FOR',
-    'in':'IN',
-    'true':'TRUE',
-    'false':'FALSE',
-    'class':'CLASS',
-    'struct':'STRUCT',
-    'new':'NEW',
-    'def':'DEF',
-    'puts':'PUTS',
-    'gets':'GETS',
-    'not' : "NOT",
-    'or' : "OR",
-    'and' : "AND"
+    'while': 'WHILE',
+    'for': 'FOR',
+    'in': 'IN',
+    'true': 'TRUE',
+    'false': 'FALSE',
+    'class': 'CLASS',
+    'struct': 'STRUCT',
+    'new': 'NEW',
+    'def': 'DEF',
+    'puts': 'PUTS',
+    'gets': 'GETS',
+    'not': "NOT",
+    'or': "OR",
+    'and': "AND"
         
 }
 
@@ -98,6 +98,7 @@ t_RKEY =r'}'
 def t_DECIMAL(t):
     r'\d+\.\d+'
     t.value = float(t.value)
+    return t
 
 def t_NUMBER(t):
     r'\d+'
@@ -106,7 +107,7 @@ def t_NUMBER(t):
 
 
 def t_ID(t):
-    r'([a-z\-0-9]+)'
+    r'([a-zA-Z?\_0-9]+)'
     if t.value in reserved_words:
         t.type = reserved_words[t.value]
     else:
