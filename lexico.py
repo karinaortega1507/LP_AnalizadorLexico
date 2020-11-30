@@ -15,7 +15,6 @@ tokens = (
     'MENORQUE',
     'ASIGN',
     'EQUAL',
-    'DIFFERENT',
     'AND',
     'ID',
     'TEXT',
@@ -39,7 +38,7 @@ tokens = (
 )
 
 reserved_words = {
-    'end': "END",
+    'end': 'END',
     'if': 'IF',
     'else': 'ELSE',
     'while': 'WHILE',
@@ -53,9 +52,8 @@ reserved_words = {
     'def': 'DEF',
     'puts': 'PUTS',
     'gets': 'GETS',
-    'not': "NOT"
-    #'or': "OR",
-    #'and': "AND"
+    'not': 'NOT',
+    'return': 'RETURN'
         
 }
 
@@ -75,7 +73,6 @@ t_RBRACK = r'\]'
 t_MAYORQUE = r'\>'
 t_MENORQUE = r'\<'
 t_EQUAL = r'={2}'
-t_DIFFERENT=r'!='
 t_ASIGN = r'={1}'
 t_AND = r'\&\&'
 t_OR= r'\|\|'
