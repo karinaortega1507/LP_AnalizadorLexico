@@ -17,7 +17,9 @@ def p_sentencia(p):
 def p_instanciacion(p):
     '''instanciacion : SYMBOL ASIGN NUMBER
                      | SYMBOL ASIGN TEXT
-                     | asignacion_estructuras'''
+                     | SYMBOL ASIGN GETS
+                     | asignacion_estructuras
+                     | SYMBOL ASIGN expresion'''
     p[0] = 'instanciacion'
 
 
@@ -30,10 +32,17 @@ def p_declaracion(p):
 def p_expresion(p):
     '''expresion : comentario
                  | impresion_puts
-                 | estructura_control'''
+                 | estructura_control
+                 | metodo_cadena'''
     p[0] = p[1]
 
 
+def p_metodo_cadena(p):
+    '''metodo_cadena : TEXT DOT UPCASE
+                     | SYMBOL DOT UPCASE
+                     | TEXT DOT CAPITALIZE
+                     | SYMBOL DOT CAPITALIZE'''
+    p[0] = 'metodo_cadena'
 
 def p_expresion_valor(p):
     '''valor : NUMBER
@@ -64,7 +73,8 @@ def p_impresion_puts(p):
     '''impresion_puts : PUTS TEXT
                       | PUTS NUMBER
                       | PUTS SYMBOL
-                      | PUTS SYMBOL estructura_array'''
+                      | PUTS SYMBOL estructura_array
+                      | PUTS metodo_cadena'''
     p[0] = 'impresion_puts'
 
 
@@ -78,11 +88,14 @@ def p_estructura_control(p):
 
 def p_bloque_if(p):
     '''bloque_if : IF condicion
+                 | IF NEG condicion
                  | ELSE
                  | ELSE IF condicion
-                 | ELSE LPAREN comparacion RPAREN
-                 | ELSE LPAREN comparacion RPAREN AND LPAREN comparacion RPAREN
-                 | ELSE comparacion OR comparacion
+                 | ELSE IF NEG condicion
+                 | ELSE condicion
+                 | ELSE NEG condicion
+                 | ELSE condicion AND condicion
+                 | ELSE condicion OR condicion
                  | RETURN boolean
                  | END'''
     p[0]='bloque_if'
