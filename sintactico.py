@@ -185,11 +185,27 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc()
 
-while True:
+'''while True:
     try:
         s = input('Ingrese su código >>> ')
     except EOFError:
         break
     if not s: continue
     result = parser.parse(s)
-    print(result)
+    print(result)'''
+
+def analizar(s):
+    while True:
+        result = parser.parse(s)
+        if not result:
+            break  # No more input
+        print(result)
+
+
+archivo = open("ejemplo.txt")
+
+for linea in archivo:
+    print("sentencia>>"+linea)
+    analizar(linea)
+    if len(linea)==0:
+        break
