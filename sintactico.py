@@ -34,6 +34,7 @@ def p_expresion(p):
     p[0] = p[1]
 
 
+
 def p_expresion_valor(p):
     '''valor : NUMBER
              | SYMBOL'''
@@ -76,19 +77,24 @@ def p_estructura_control(p):
 
 
 def p_bloque_if(p):
-    '''bloque_if : IF boolean
-                 | IF comparacion
-                 | IF LPAREN comparacion RPAREN
-                 | IF LPAREN comparacion RPAREN AND LPAREN comparacion RPAREN
-                 | IF comparacion OR comparacion
-                 | IF LPAREN comparacion RPAREN OR LPAREN comparacion RPAREN
+    '''bloque_if : IF condicion
                  | ELSE
-                 | ELSE comparacion
+                 | ELSE IF condicion
                  | ELSE LPAREN comparacion RPAREN
                  | ELSE LPAREN comparacion RPAREN AND LPAREN comparacion RPAREN
                  | ELSE comparacion OR comparacion
+                 | RETURN boolean
                  | END'''
     p[0]='bloque_if'
+
+
+def p_condicion(p):
+    '''condicion : boolean
+                 | comparacion
+                 | LPAREN comparacion RPAREN
+                 | LPAREN comparacion RPAREN AND LPAREN comparacion RPAREN
+                 | comparacion OR comparacion
+                 | LPAREN comparacion RPAREN OR LPAREN comparacion RPAREN'''
 
 
 def p_boolean(p):
