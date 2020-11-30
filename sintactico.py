@@ -30,15 +30,14 @@ def p_declaracion(p):
 def p_expresion(p):
     '''expresion : comentario
                  | impresion_puts
-                 | expresion_valor
                  | estructura_control'''
     p[0] = p[1]
 
 
 def p_expresion_valor(p):
-    '''expresion_valor : NUMBER
-                       | TEXT'''
-    p[0] = p[1]
+    '''valor : NUMBER
+             | SYMBOL'''
+    p[0] = 'valor'
 
 
 def p_asignacion_estructuras(p):
@@ -63,26 +62,33 @@ def p_valor_array(p):
 def p_impresion_puts(p):
     '''impresion_puts : PUTS TEXT
                       | PUTS NUMBER
-                      | PUTS SYMBOL'''
+                      | PUTS SYMBOL
+                      | PUTS SYMBOL estructura_array'''
     p[0] = 'impresion_puts'
 #Finaliza karina Ortega
 
+
 #Inicia Jocelyn
 def p_estructura_control(p):
-  ''' estructura_control : bloque_if END
-                         | bloque_if else END
+  ''' estructura_control : bloque_if
                          | bloque_for'''
   p[0]= 'estructura_control'
 
+
 def p_bloque_if(p):
-    '''bloque_if : IF boolean sentencia
-                 | IF comparacion sentencia
-                 | IF comparacion EQUAL boolean sentencia '''
+    '''bloque_if : IF boolean
+                 | IF comparacion
+                 | IF LPAREN comparacion RPAREN
+                 | IF LPAREN comparacion RPAREN AND LPAREN comparacion RPAREN
+                 | IF comparacion OR comparacion
+                 | IF LPAREN comparacion RPAREN OR LPAREN comparacion RPAREN
+                 | ELSE comparacion
+                 | ELSE LPAREN comparacion RPAREN
+                 | ELSE LPAREN comparacion RPAREN AND LPAREN comparacion RPAREN
+                 | ELSE comparacion OR comparacion
+                 | END'''
     p[0]='bloque_if'
 
-def p_else(p):
-    'else : ELSE sentencia'
-    p[0]= 'else'
 
 def p_boolean(p):
     ''' boolean : FALSE
@@ -90,11 +96,21 @@ def p_boolean(p):
                 '''
     p[0]= 'boolean'
 
+
+def p_signo(p):
+    '''signo : EQUAL
+             | MAYORQUE
+             | MENORQUE
+             | DIFER
+             | LEQT
+             | GEQT'''
+    p[0] = p[1]
+
+
 def p_comparacion(p):
-    '''comparacion : NUMBER EQUAL NUMBER
-                   | NUMBER MAYORQUE NUMBER
-                   | NUMBER MENORQUE NUMBER'''
+    '''comparacion : valor signo valor'''
     p[0]= 'comparacion'
+
 
 def p_bloque_for(p):
     '''bloque_for : FOR SYMBOL IN rango sentencia END'''
@@ -172,6 +188,7 @@ def p_expresion_logicas(t):
 
 #fin Edwin
 
+
 def p_comentario(p):
     '''comentario : COMMENT'''
     p[0] = 'comentario'
@@ -194,18 +211,15 @@ parser = yacc.yacc()
     result = parser.parse(s)
     print(result)'''
 
-def analizar(s):
-    while True:
-        result = parser.parse(s)
-        if not result:
-            break  # No more input
-        print(result)
-
 
 archivo = open("ejemplo.txt")
 
 for linea in archivo:
-    print("sentencia>>"+linea)
-    analizar(linea)
-    if len(linea)==0:
+    try:
+        print("\nsentencia >>> " + linea)
+    except EOFError:
         break
+    if len(linea) == 0:
+       break
+    result = parser.parse(linea)
+    print(result)
