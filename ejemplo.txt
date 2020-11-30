@@ -5,16 +5,19 @@ arreglo = [2,4,6,10]
 puts  arreglo[2]
 
 #Se definen las variables num1 y num2
-num1 = 20
+puts "Ingrese un numero"
+num1 = gets
 num2 = 5
 #Estructura de control IF-ELSE
 if  (num1 > 18) && (num1<50)
-    puts "adulto"
+    puts "adulto".upcase
 else
-    puts "no es adulto"
+    puts "no es adulto".capitalize
 end
-
-
+#Metodo UPCASE
+cadena = "hola".upcase
+#Metodo CAPITALIZE
+cadena = "hola".capitalize
 if num2 == 5
     puts nombre
 else
@@ -28,7 +31,7 @@ for i in(0..9)
 end
 
 #Diferente 
-if (5!=20)
+if !(5!=20)
 puts "Correcto"
 end
 
