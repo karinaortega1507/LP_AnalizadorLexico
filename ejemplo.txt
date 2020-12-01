@@ -61,5 +61,4 @@ num=5
 mun1=6
 num>=num1
 
-alumno = {"nombre" => "Carlos",
-"apellido" => "Lopez", "edad" => 22}
+alumno = {"nombre" => "Carlos","apellido" => "Lopez", "edad" => 22}
