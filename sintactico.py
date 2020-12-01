@@ -1,5 +1,5 @@
 # se importa el módulo yacc
-import ply.yacc as yacc 
+import ply.yacc as yacc
 
 # se importa nuestra lista de tokens
 from lexico import tokens
@@ -19,7 +19,8 @@ def p_instanciacion(p):
                      | SYMBOL ASIGN TEXT
                      | SYMBOL ASIGN GETS
                      | asignacion_estructuras
-                     | SYMBOL ASIGN expresion'''
+                     | SYMBOL ASIGN expresion
+                     | SYMBOL ASIGN PLUS'''
     p[0] = 'instanciacion'
 
 
@@ -33,7 +34,8 @@ def p_expresion(p):
     '''expresion : comentario
                  | impresion_puts
                  | estructura_control
-                 | metodo_cadena'''
+                 | metodo_cadena
+                 | operaciones'''
     p[0] = p[1]
 
 
@@ -82,7 +84,8 @@ def p_impresion_puts(p):
 #Inicia Jocelyn
 def p_estructura_control(p):
   ''' estructura_control : bloque_if
-                         | bloque_for'''
+                         | bloque_for
+                         | bloque_while'''
   p[0]= 'estructura_control'
 
 
@@ -138,6 +141,35 @@ def p_bloque_for(p):
 def p_rango(p):
     'rango : LPAREN NUMBER RANGE NUMBER RPAREN'
     p[0]= 'rango'
+
+def p_bloque_while(p):
+    '''bloque_while : WHILE condicion'''
+
+def p_operaciones(p):
+    '''operaciones : plus
+                   | minus
+                   | times
+                   | div'''
+
+def p_plus(p):
+    '''plus : NUMBER PLUS NUMBER
+            | SYMBOL PLUS NUMBER'''
+    p[0] = 'plus'
+
+
+def p_minus(p):
+    ' minus : NUMBER MINUS NUMBER'
+    p[0] = p[1] - p[3]
+
+def p_times(p):
+    'times : NUMBER TIMES NUMBER'
+    p[0] = p[1] * p[3]
+
+
+def p_div(p):
+    'div : NUMBER DIVIDE NUMBER'
+    p[0] = p[1] / p[3]
+
 
 def p_estructura_hash(p):
     '''estructura_hash :  LKEY valor_hash RKEY'''
