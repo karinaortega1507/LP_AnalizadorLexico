@@ -270,13 +270,15 @@ parser = yacc.yacc()
 
 archivo = open("ejemplo.txt")
 
-for linea in archivo:
 
-    try:
-        print("\nsentencia >>> " + linea)
-    except EOFError:
-        break
-    if len(linea) == 0:
-       break
-    result = parser.parse(linea)
-    print(result)
+
+for linea in archivo:
+    linea = linea.strip("\n")
+    if len(linea) !=0 :
+        try:
+            print("\nsentencia >>> " + linea)
+        except EOFError:
+            break
+        result = parser.parse(linea)
+        print(result)
+
