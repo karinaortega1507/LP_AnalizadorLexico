@@ -131,12 +131,13 @@ def p_signo(p):
 
 
 def p_comparacion(p):
-    '''comparacion : valor signo valor'''
+    '''comparacion : valor signo valor
+                   | SYMBOL signo SYMBOL'''
     p[0]= 'comparacion'
 
 
 def p_bloque_for(p):
-    '''bloque_for : FOR SYMBOL IN rango sentencia END'''
+    '''bloque_for : FOR SYMBOL IN rango'''
 
 def p_rango(p):
     'rango : LPAREN NUMBER RANGE NUMBER RPAREN'
@@ -180,7 +181,6 @@ def p_valor_hash(p):
                   | TEXT ASIGN MAYORQUE NUMBER
                   | TEXT ASIGN MAYORQUE TEXT
                   | valor_hash COMMA valor_hash'''
-    #Completar hash
 
 #Finaliza karina Ortega
 
@@ -272,6 +272,7 @@ parser = yacc.yacc()
 archivo = open("ejemplo.txt")
 
 for linea in archivo:
+
     try:
         print("\nsentencia >>> " + linea)
     except EOFError:
