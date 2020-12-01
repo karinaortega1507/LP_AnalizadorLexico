@@ -3,7 +3,6 @@
 #Arreglo
 arreglo = [2,4,6,10]
 puts  arreglo[2]
-
 #Se definen las variables num1 y num2
 puts "Ingrese un numero"
 num1 = gets
@@ -22,31 +21,25 @@ if num2 == 5
     puts nombre
 else
     puts "bye"
-
 #Jocelyn Chicaiza
 #Estructura de control FOR y uso de range
-
 for i in(0..9)
     puts i
 end
-
 #Diferente 
 if !(5!=20)
 puts "Correcto"
 end
-
 #Or
 if (10 > 5) || (5 < 5)
     return false
 end
-
 #while
 i=0
 while i<10
 puts "hola"
 i=i+1
 end
-
 #Edwin Ullaguari L.
 class prueba
 Person = struct.new(:name, :age)
@@ -59,6 +52,6 @@ end
 
 num=5
 mun1=6
-num>=num1
-
+num>num1
+#hash
 alumno = {"nombre" => "Carlos","apellido" => "Lopez", "edad" => 22}
