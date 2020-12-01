@@ -51,7 +51,6 @@ class mamifero
 end
 
 num=5
-mun1=6
-num>num1
+num1=6
 #hash
 alumno = {"nombre" => "Carlos","apellido" => "Lopez", "edad" => 22}
