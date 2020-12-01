@@ -70,6 +70,7 @@ def p_valor_array(p):
                    | NUMBER COMMA valor_array'''
 
 
+
 def p_impresion_puts(p):
     '''impresion_puts : PUTS TEXT
                       | PUTS NUMBER
@@ -89,11 +90,17 @@ def p_estructura_control(p):
 
 
 def p_bloque_if(p):
-    '''bloque_if : IF condicion expresion ELSE expresion END
-                 | IF NEG condicion expresion END
-                 | IF condicion expresion END
-                 | IF condicion RETURN boolean END
-                 | IF condicion expresion ELSE bloque_if'''
+    '''bloque_if : IF condicion
+                 | IF NEG condicion
+                 | ELSE
+                 | ELSE IF condicion
+                 | ELSE IF NEG condicion
+                 | ELSE condicion
+                 | ELSE NEG condicion
+                 | ELSE condicion AND condicion
+                 | ELSE condicion OR condicion
+                 | RETURN boolean
+                 | END'''
     p[0]='bloque_if'
 
 
@@ -264,20 +271,12 @@ parser = yacc.yacc()
 archivo = open("ejemplo.txt")
 
 for linea in archivo:
-    linea = linea.strip("\n")
-    if len(linea) !=0 :
-        # Se coloca en una sola linea el bloque IF
-        if (linea[:2] == "if"):
-            estructura = linea
-            for linea in archivo:
-                #linea = linea.strip("\n")
-                estructura = estructura + linea
-                if(linea[:3] == "end"):
-                    break
-            linea =estructura
-        try:
-            print("\nsentencia >>> " + linea)
-        except EOFError:
-            break
-        result = parser.parse(linea)
-        print(result)
+
+    try:
+        print("\nsentencia >>> " + linea)
+    except EOFError:
+        break
+    if len(linea) == 0:
+       break
+    result = parser.parse(linea)
+    print(result)
