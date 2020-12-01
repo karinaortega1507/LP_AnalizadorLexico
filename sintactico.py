@@ -131,8 +131,7 @@ def p_signo(p):
 
 
 def p_comparacion(p):
-    '''comparacion : valor signo valor
-                   | SYMBOL signo SYMBOL'''
+    '''comparacion : valor signo valor'''
     p[0]= 'comparacion'
 
 
