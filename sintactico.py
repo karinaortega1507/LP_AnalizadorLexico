@@ -176,7 +176,10 @@ def p_estructura_hash(p):
     p[0] = 'estructura_hash'
 
 def p_valor_hash(p):
-    '''valor_hash : NUMBER '''
+    '''valor_hash : NUMBER ASIGN MAYORQUE NUMBER
+                  | TEXT ASIGN MAYORQUE NUMBER
+                  | TEXT ASIGN MAYORQUE TEXT
+                  | valor_hash COMMA valor_hash'''
     #Completar hash
 
 #Finaliza karina Ortega
