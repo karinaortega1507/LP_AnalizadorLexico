@@ -98,6 +98,18 @@ def p_bloque_if(p):
     p[0]='bloque_if'
 
 
+
+def p_bloque_for(p):
+    '''bloque_for : FOR SYMBOL IN rango expresion END
+                  | FOR SYMBOL IN rango bloque_if expresion END
+                  | FOR SYMBOL IN rango expresion bloque_if END'''
+
+
+def p_bloque_while(p):
+    '''bloque_while : WHILE condicion expresion instanciacion END
+                    | WHILE condicion bloque_if expresion instanciacion END '''
+
+
 def p_condicion(p):
     '''condicion : boolean
                  | comparacion
@@ -129,15 +141,10 @@ def p_comparacion(p):
     p[0]= 'comparacion'
 
 
-def p_bloque_for(p):
-    '''bloque_for : FOR SYMBOL IN rango'''
-
 def p_rango(p):
     'rango : LPAREN NUMBER RANGE NUMBER RPAREN'
     p[0]= 'rango'
 
-def p_bloque_while(p):
-    '''bloque_while : WHILE condicion'''
 
 def p_operaciones(p):
     '''operaciones : plus
@@ -271,7 +278,20 @@ for linea in archivo:
         if (linea[:2] == "if"):
             estructura = linea
             for linea in archivo:
-                #linea = linea.strip("\n")
+                estructura = estructura + linea
+                if(linea[:3] == "end"):
+                    break
+            linea =estructura
+        elif (linea[:3] == "for"):
+            estructura = linea
+            for linea in archivo:
+                estructura = estructura + linea
+                if(linea[:3] == "end"):
+                    break
+            linea =estructura
+        elif (linea[:5] == "while"):
+            estructura = linea
+            for linea in archivo:
                 estructura = estructura + linea
                 if(linea[:3] == "end"):
                     break
