@@ -59,9 +59,12 @@ while i<10
 end
 
 #Edwin Ullaguari L.
-$x=1
+$x=10.5
 def respira
 	puts "inhala y exhala"
+end
+def cuadrado(x)
+	return x*x
 end
 
 #hash
