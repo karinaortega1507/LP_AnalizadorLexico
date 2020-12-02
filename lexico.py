@@ -25,8 +25,6 @@ tokens = (
     'OR',
     'RANGE',
     'DECIMAL',
-    'ARROW',
-    'ATRIBUTE',
     'SYMBOL',
     'DOT',
     'DIFER',
@@ -44,12 +42,9 @@ reserved_words = {
     'in': 'IN',
     'true': 'TRUE',
     'false': 'FALSE',
-    'class': 'CLASS',
-    'new': 'NEW',
     'def': 'DEF',
     'puts': 'PUTS',
     'gets': 'GETS',
-    'not': 'NOT',
     'upcase': 'UPCASE',
     'capitalize': 'CAPITALIZE',
     'return': 'RETURN',
@@ -80,8 +75,6 @@ t_ASIGN = r'={1}'
 t_AND = r'\&\&'
 t_OR= r'\|\|'
 t_RANGE= r'\.\.'
-t_ARROW= r'=>'
-t_ATRIBUTE= r'\:[a-z]+'
 t_SYMBOL= r'^[$]{0,1}[a-z|A-Z][a-zA-Z0-9]*'
 t_DOT= r'\.'
 t_DIFER = r'!='
