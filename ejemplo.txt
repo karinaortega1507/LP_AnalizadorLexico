@@ -5,10 +5,12 @@
 arreglo = [2,4,6,10]
 puts  arreglo[2]
 
-#Se definen las variables num1 y num2
+#Se definen variables
 puts "Ingrese un numero"
 num1 = gets
 num2 = 5
+flotante = 0.25
+numeros = (1..10)
 
 #Estructura de control IF-ELSE
 if  (num1 > 18) && (num1<50)
@@ -31,6 +33,10 @@ cadena = "hola"
 for i in(0..9)
     puts i
 end
+
+#Metodos con range
+(0..5).step(2)
+(1..5).min
 
 #Diferente
 if !(5!=20)
@@ -60,4 +66,12 @@ end
 
 #hash
 alumno = {"nombre" => "Carlos","apellido" => "Lopez", "edad" => 22}
+
+#Metodos con hash
+alumno.lenght
+alumno.keys
+
+
+
+
 

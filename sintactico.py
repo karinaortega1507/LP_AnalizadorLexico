@@ -20,7 +20,9 @@ def p_instanciacion(p):
                      | SYMBOL ASIGN GETS
                      | asignacion_estructuras
                      | SYMBOL ASIGN expresion
-                     | SYMBOL ASIGN PLUS'''
+                     | SYMBOL ASIGN PLUS
+                     | SYMBOL ASIGN DECIMAL
+                     | SYMBOL ASIGN rango'''
     p[0] = 'instanciacion'
 
 
@@ -35,7 +37,9 @@ def p_expresion(p):
                  | impresion_puts
                  | estructura_control
                  | metodo_cadena
-                 | operaciones'''
+                 | operaciones
+                 | metodo_range
+                 | metodo_hash'''
     p[0] = p[1]
 
 
@@ -76,7 +80,9 @@ def p_impresion_puts(p):
                       | PUTS NUMBER
                       | PUTS SYMBOL
                       | PUTS SYMBOL estructura_array
-                      | PUTS metodo_cadena'''
+                      | PUTS metodo_cadena
+                      | PUTS metodo_hash
+                      | PUTS metodo_range'''
     p[0] = 'impresion_puts'
 
 
@@ -94,7 +100,7 @@ def p_bloque_if(p):
                  | IF NEG condicion expresion END
                  | IF condicion expresion END
                  | IF condicion RETURN boolean END
-                 | IF condicion expresion ELSE bloque_if'''
+                 | IF condicion expresion ELSE bloque_if END'''
     p[0]='bloque_if'
 
 
@@ -145,6 +151,14 @@ def p_rango(p):
     'rango : LPAREN NUMBER RANGE NUMBER RPAREN'
     p[0]= 'rango'
 
+def p_metodo_range(p):
+    '''metodo_range : TEXT DOT STEP LPAREN NUMBER RPAREN
+                     | SYMBOL DOT STEP LPAREN NUMBER RPAREN
+                     | rango DOT STEP LPAREN NUMBER RPAREN
+                     | TEXT DOT MIN
+                     | SYMBOL DOT MIN
+                     | rango DOT MIN'''
+    p[0] = 'metodo_range'
 
 def p_operaciones(p):
     '''operaciones : plus
@@ -182,69 +196,16 @@ def p_valor_hash(p):
                   | TEXT ASIGN MAYORQUE TEXT
                   | valor_hash COMMA valor_hash'''
 
+def p_metodo_hash(p):
+    '''metodo_hash : TEXT DOT LENGHT
+                     | SYMBOL DOT LENGHT
+                     | TEXT DOT KEYS
+                     | SYMBOL DOT KEYS'''
+    p[0] = 'metodo_hash'
+
 #Finaliza karina Ortega
 
 #fin Jocelyn
-
-#Inicia Edwin
-def p_expresion_booleana(p):
-    '''
-    expresion   :   expresion AND expresion
-                |   expresion OR expresion
-                |   expresion NOT expresion
-                |  LPAREN expresion AND expresion RPAREN
-                |  LPAREN expresion OR expresion RPAREN
-                |  LPAREN expresion NOT expresion RPAREN
-    '''
-    if p[2] == "&&":
-        p[0] = p[1] and p[3]
-    elif p[2] == "||":
-        p[0] = p[1] or p[3]
-    elif p[2] == "not":
-        p[0] =  p[1] is not p[3]
-    elif p[3] == "&&":
-        p[0] = p[2] and p[4]
-    elif p[3] == "||":
-        p[0] = p[2] or p[4]
-    elif p[3] == "not":
-        p[0] =  p[2] is not p[4]
-
-def p_expresion_logicas(t):
-    '''
-    expresion   :  expresion MENORQUE expresion
-                |  expresion MAYORQUE expresion
-                |  expresion LEQT expresion
-                |   expresion GEQT expresion
-                |   expresion EQUAL expresion
-                |   expresion DIFER expresion
-                |  LPAREN expresion RPAREN MENORQUE LPAREN expresion RPAREN
-                |  LPAREN expresion RPAREN MAYORQUE LPAREN expresion RPAREN
-                |  LPAREN expresion RPAREN LEQT LPAREN expresion RPAREN
-                |  LPAREN  expresion RPAREN GEQT LPAREN expresion RPAREN
-                |  LPAREN  expresion RPAREN ASIGN LPAREN expresion RPAREN
-                |  LPAREN  expresion RPAREN DIFER LPAREN expresion RPAREN
-    '''
-    if t[2] == "<": t[0] = t[1] < t[3]
-    elif t[2] == ">": t[0] = t[1] > t[3]
-    elif t[2] == "<=": t[0] = t[1] <= t[3]
-    elif t[2] == ">=": t[0] = t[1] >= t[3]
-    elif t[2] == "==": t[0] = t[1] is t[3]
-    elif t[2] == "!=": t[0] = t[1] != t[3]
-    elif t[3] == "<":
-        t[0] = t[2] < t[4]
-    elif t[2] == ">":
-        t[0] = t[2] > t[4]
-    elif t[3] == "<=":
-        t[0] = t[2] <= t[4]
-    elif t[3] == ">=":
-        t[0] = t[2] >= t[4]
-    elif t[3] == "==":
-        t[0] = t[2] is t[4]
-    elif t[3] == "!=":
-        t[0] = t[2] != t[4]
-
-#fin Edwin
-
 
 def p_comentario(p):
     '''comentario : COMMENT'''

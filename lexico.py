@@ -27,13 +27,13 @@ tokens = (
     'ARROW',
     'GEQT',
     'LEQT',
-    'DOSPUNTOS',
     'ATRIBUTE',
     'SYMBOL',
     'DOT',
     'DIFER',
     'LKEY',
-    'RKEY'
+    'RKEY',
+    'QUEST'
 
 )
 
@@ -47,7 +47,6 @@ reserved_words = {
     'true': 'TRUE',
     'false': 'FALSE',
     'class': 'CLASS',
-    'struct': 'STRUCT',
     'new': 'NEW',
     'def': 'DEF',
     'puts': 'PUTS',
@@ -55,8 +54,11 @@ reserved_words = {
     'not': 'NOT',
     'upcase': 'UPCASE',
     'capitalize': 'CAPITALIZE',
-    'return': 'RETURN'
-        
+    'return': 'RETURN',
+    'step': 'STEP',
+    'min': 'MIN',
+    'lenght': 'LENGHT',
+    'keys': 'KEYS',
 }
 
 tokens = tokens + tuple(reserved_words.values())
@@ -64,7 +66,7 @@ tokens = tokens + tuple(reserved_words.values())
 
 # Regular expression rules for simple tokens
 t_PLUS = r'\+'
-t_MINUS = r'-'
+t_MINUS = r'\-'
 t_TIMES = r'\*'
 t_DIVIDE = r'/'
 t_LPAREN = r'\('
@@ -82,7 +84,6 @@ t_RANGE= r'\.\.'
 t_ARROW= r'=>'
 t_GEQT= r'\>='
 t_LEQT= r'\<='
-t_DOSPUNTOS= r'\:'
 t_ATRIBUTE= r'\:[a-z]+'
 t_SYMBOL= r'^[$]{0,1}[a-z|A-Z][a-zA-Z0-9]*'
 t_DOT= r'\.'
@@ -90,6 +91,7 @@ t_DIFER = r'!='
 t_NEG = r'!'
 t_LKEY = r'{'
 t_RKEY =r'}'
+t_QUEST=r'\?'
 
 
 
