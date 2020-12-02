@@ -6,6 +6,7 @@ tokens = (
     'MINUS',
     'TIMES',
     'DIVIDE',
+    'POT',
     'NUMBER',
     'LPAREN',
     'RPAREN',
@@ -66,6 +67,7 @@ t_PLUS = r'\+'
 t_MINUS = r'\-'
 t_TIMES = r'\*'
 t_DIVIDE = r'/'
+t_POT= r'\*{2}'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_COMMA = r'\,'

@@ -162,7 +162,8 @@ def p_operaciones(p):
     '''operaciones : plus
                    | minus
                    | times
-                   | div'''
+                   | div
+                   | pot'''
 
 def p_plus(p):
     '''plus : NUMBER PLUS NUMBER
@@ -183,6 +184,9 @@ def p_div(p):
     'div : NUMBER DIVIDE NUMBER'
     p[0] = p[1] / p[3]
 
+def p_pot(p):
+    'pot : NUMBER POT NUMBER'
+    p[0] = p[1] ** p[3]
 
 def p_estructura_hash(p):
     '''estructura_hash :  LKEY valor_hash RKEY'''
