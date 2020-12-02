@@ -25,15 +25,12 @@ tokens = (
     'RANGE',
     'DECIMAL',
     'ARROW',
-    'GEQT',
-    'LEQT',
     'ATRIBUTE',
     'SYMBOL',
     'DOT',
     'DIFER',
     'LKEY',
-    'RKEY',
-    'QUEST'
+    'RKEY'
 
 )
 
@@ -82,8 +79,6 @@ t_AND = r'\&\&'
 t_OR= r'\|\|'
 t_RANGE= r'\.\.'
 t_ARROW= r'=>'
-t_GEQT= r'\>='
-t_LEQT= r'\<='
 t_ATRIBUTE= r'\:[a-z]+'
 t_SYMBOL= r'^[$]{0,1}[a-z|A-Z][a-zA-Z0-9]*'
 t_DOT= r'\.'
@@ -91,7 +86,6 @@ t_DIFER = r'!='
 t_NEG = r'!'
 t_LKEY = r'{'
 t_RKEY =r'}'
-t_QUEST=r'\?'
 
 
 

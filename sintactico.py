@@ -136,9 +136,7 @@ def p_signo(p):
     '''signo : EQUAL
              | MAYORQUE
              | MENORQUE
-             | DIFER
-             | LEQT
-             | GEQT'''
+             | DIFER'''
     p[0] = p[1]
 
 
