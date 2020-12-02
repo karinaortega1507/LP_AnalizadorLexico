@@ -28,6 +28,7 @@ class App(Frame):
 
         frame1 = Frame(self)
         frame1.pack(fill=X)
+        frame1.config(width=480, height=320)
 
         lbl1 = Label(frame1, text="Expresion :", width=18)
         lbl1.pack(side=LEFT, padx=5, pady=5)
@@ -88,14 +89,14 @@ class App(Frame):
         if len(self.expr.get("1.0", END)) == 1:
             self.errorMsg('error')
         else:
-            #result = test(self.expr.get("1.0", END))
+            result = analizar(self.expr.get("1.0", END))
             for r in result:
                 self.tbox.insert(END, r + '\n')
 
 
 def main():
     root = Tk()
-    root.geometry("1000x800")
+    root.geometry("800x600")
     app = App(root)
     root.mainloop()
 

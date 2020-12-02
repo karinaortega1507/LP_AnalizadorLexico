@@ -1,7 +1,9 @@
 import ply.lex as lex
+#Resultado del analisis
+resultado_lexema = []
 
 # List of token names.   This is always required
-tokens = (
+tokens = [
     'PLUS',
     'MINUS',
     'TIMES',
@@ -31,31 +33,7 @@ tokens = (
     'LKEY',
     'RKEY'
 
-)
-
-reserved_words = {
-    'end': 'END',
-    'if': 'IF',
-    'else': 'ELSE',
-    'while': 'WHILE',
-    'for': 'FOR',
-    'in': 'IN',
-    'true': 'TRUE',
-    'false': 'FALSE',
-    'def': 'DEF',
-    'puts': 'PUTS',
-    'gets': 'GETS',
-    'upcase': 'UPCASE',
-    'capitalize': 'CAPITALIZE',
-    'return': 'RETURN',
-    'step': 'STEP',
-    'min': 'MIN',
-    'lenght': 'LENGHT',
-    'keys': 'KEYS',
-}
-
-tokens = tokens + tuple(reserved_words.values())
-
+]
 
 # Regular expression rules for simple tokens
 t_PLUS = r'\+'
@@ -83,6 +61,29 @@ t_LKEY = r'{'
 t_RKEY =r'}'
 
 
+reserved_words = {
+    'end': 'END',
+    'if': 'IF',
+    'else': 'ELSE',
+    'while': 'WHILE',
+    'for': 'FOR',
+    'in': 'IN',
+    'true': 'TRUE',
+    'false': 'FALSE',
+    'def': 'DEF',
+    'puts': 'PUTS',
+    'gets': 'GETS',
+    'upcase': 'UPCASE',
+    'capitalize': 'CAPITALIZE',
+    'return': 'RETURN',
+    'step': 'STEP',
+    'min': 'MIN',
+    'lenght': 'LENGHT',
+    'keys': 'KEYS',
+}
+
+tokens = tokens + list(reserved_words.values())
+
 
 # A regular expression rule with some action code
 
@@ -96,6 +97,9 @@ def t_NUMBER(t):
     t.value = int(t.value)
     return t
 
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
 
 def t_ID(t):
     r'([a-zA-Z?\_0-9]+)'
@@ -122,25 +126,35 @@ t_ignore = ' \t'
 
 def t_error(t):
     #print("IlLegal caracter '%s'" % t.value[0])
+    global resultado_lexema
     estado="** Token no valido en la Linea {:4} Valor {:16} Posicion {:4}".format(str(t.lineno), str(t.value), str(t.lexpos))
     print(estado)
     t.lexer.skip(1)
-
-
-def t_newline(t):
-    r'\n+'
-    t.lexer.lineno += len(t.value)
-
-
-
-
 
 # Build the lexer
 lexer = lex.lex()
 
 
 # Give the lexer some input
-def analizar(data):
+def analizar(code):
+	global resultado_lexema
+
+	analizador = lex.lex()
+	analizador.input(code)
+
+	resultado_lexema.clear()
+	while True:
+		tok = analizador.token()
+		print(tok)
+		if not tok:
+			break
+		# print("lexema de "+tok.type+" valor "+tok.value+" linea "tok.lineno)
+		estado = "Linea {:4} Tipo {:16} Valor {:16} Posicion {:4}".format(str(tok.lineno), str(tok.type),
+																		  str(tok.value), str(tok.lexpos))
+		resultado_lexema.append(estado)
+	return resultado_lexema
+
+'''def analizar(data):
     lexer.input(data)
     # Tokenize
     while True:
@@ -150,6 +164,7 @@ def analizar(data):
         print(tok)
 
 '''
+'''''
 archivo = open("ejemplo.txt")
 for linea in archivo:
     print(">>"+linea)
