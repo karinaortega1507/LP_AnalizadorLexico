@@ -12,19 +12,19 @@ num2 = 5
 
 #Estructura de control IF-ELSE
 if  (num1 > 18) && (num1<50)
-    puts "adulto".upcase
+    puts "adulto"
 else
-    puts "no es adulto".capitalize
+    puts "no es adulto"
 end
 
 #Metodo UPCASE
-cadena = "hola".upcase
+cadena = "hola"
+"hola".upcase
+
 #Metodo CAPITALIZE
-cadena = "hola".capitalize
-if num2 == 5
-    puts nombre
-else
-    puts "bye"
+cadena = "hola"
+"hola".capitalize
+
 
 #Jocelyn Chicaiza
 #Estructura de control FOR y uso de range
@@ -45,22 +45,18 @@ end
 #while
 i=0
 while i<10
-puts "hola"
-i=i+1
+ if (10 < 5)
+    return true
+ end
+ puts "hola"
+ i=i+1
 end
 
 #Edwin Ullaguari L.
-class prueba
-Person = struct.new(:name, :age)
 $x=1
-class mamifero
-	def respira
-		puts "inhala y exhala"
-	end
+def respira
+	puts "inhala y exhala"
 end
-
-num=5
-num1=6
 
 #hash
 alumno = {"nombre" => "Carlos","apellido" => "Lopez", "edad" => 22}
