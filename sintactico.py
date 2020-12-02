@@ -9,8 +9,7 @@ from lexico import tokens
 # se define una línea de código
 def p_sentencia(p):
     '''sentencia : expresion
-               |   instanciacion
-               |   declaracion'''
+               |   instanciacion'''
     p[0] = p[1]
 
 
@@ -26,12 +25,6 @@ def p_instanciacion(p):
     p[0] = 'instanciacion'
 
 
-def p_declaracion(p):
-    '''declaracion : CLASS SYMBOL
-                   | DEF SYMBOL'''
-    p[0] = 'declaracion'
-
-
 def p_expresion(p):
     '''expresion : comentario
                  | impresion_puts
@@ -39,7 +32,8 @@ def p_expresion(p):
                  | metodo_cadena
                  | operaciones
                  | metodo_range
-                 | metodo_hash'''
+                 | metodo_hash
+                 | funcion_def'''
     p[0] = p[1]
 
 
@@ -116,6 +110,14 @@ def p_bloque_while(p):
                     | WHILE condicion bloque_if expresion instanciacion END '''
 
 
+def p_funcion_def(p):
+    '''funcion_def :  DEF SYMBOL expresion END
+                    | DEF SYMBOL LPAREN SYMBOL RPAREN RETURN expresion END
+                    | DEF SYMBOL LPAREN SYMBOL RPAREN expresion END
+                   | DEF SYMBOL LPAREN RPAREN RETURN expresion END'''
+    p[0] = 'funcion_def'
+
+
 def p_condicion(p):
     '''condicion : boolean
                  | comparacion
@@ -166,27 +168,26 @@ def p_operaciones(p):
                    | pot'''
 
 def p_plus(p):
-    '''plus : NUMBER PLUS NUMBER
-            | SYMBOL PLUS NUMBER'''
+    '''plus : valor PLUS valor'''
     p[0] = 'plus'
 
 
 def p_minus(p):
-    ' minus : NUMBER MINUS NUMBER'
+    ' minus : valor MINUS valor'
     p[0] = p[1] - p[3]
 
 def p_times(p):
-    'times : NUMBER TIMES NUMBER'
-    p[0] = p[1] * p[3]
+    'times : valor TIMES valor'
+    #p[0] = p[1] * p[3]
 
 
 def p_div(p):
-    'div : NUMBER DIVIDE NUMBER'
-    p[0] = p[1] / p[3]
+    'div : valor DIVIDE valor'
+    #p[0] = p[1] / p[3]
 
 def p_pot(p):
-    'pot : NUMBER POT NUMBER'
-    p[0] = p[1] ** p[3]
+    'pot : valor POT valor'
+    #p[0] = p[1] ** p[3]
 
 def p_estructura_hash(p):
     '''estructura_hash :  LKEY valor_hash RKEY'''
@@ -259,6 +260,13 @@ for linea in archivo:
                 if(linea[:3] == "end"):
                     break
             linea =estructura
+        elif (linea[:3] == "def"):
+            estructura = linea
+            for linea in archivo:
+                estructura = estructura + linea
+                if (linea[:3] == "end"):
+                    break
+            linea = estructura
         try:
             print("\nsentencia >>> " + linea)
         except EOFError:
