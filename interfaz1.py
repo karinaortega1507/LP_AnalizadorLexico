@@ -79,8 +79,8 @@ class App(Frame):
         if len(self.expr.get("1.0", END)) == 1:
             self.errorMsg('error')
         else:
-            #result = validate(self.expr.get("1.0", END))
-            file = open('ejemplo.txt', 'r')
+            result = validate(self.expr.get("1.0", END))
+            file = open('res_sin', 'r')
             last_line = file.read().splitlines()[-1] + '\n'
             self.tbox2.insert(END,last_line)
 

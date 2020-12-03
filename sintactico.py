@@ -3,7 +3,29 @@ import ply.yacc as yacc
 
 # se importa nuestra lista de tokens
 from lexico import tokens
+f = open('res_sin', 'w')
+f.close
 
+def p_body(p):
+    """
+    body : expresion
+        | metodo_cadena
+
+        | asignacion_estructuras
+        | impresion_puts
+        | estructura_control
+        | funcion_def
+        | signo
+        | metodo_range
+        | operaciones
+        | estructura_hash
+        | metodo_hash
+        | comentario
+    """
+    print("CORRECTO!")
+    f = open('res_sin', 'w')
+    f.write("Correcto\n")
+    f.close()
 
 #Inicia Karina Ortega
 # se define una línea de código
@@ -217,8 +239,16 @@ def p_comentario(p):
 
 # Error rule for syntax errors
 def p_error(p):
-    print("Syntax error in input!")
-
+    #print("Syntax error in input!")
+    f = open('res_sin', 'w')
+    if p:
+        print(p)
+        print("Error sintactico")
+        f.write("Error sintactico")
+    else:
+        print("Error lexico")
+        f.write("Error lexico")
+    f.close()
 
 # Build the parser
 parser = yacc.yacc()
@@ -232,8 +262,11 @@ parser = yacc.yacc()
     result = parser.parse(s)
     print(result)'''
 
+def validate(expr):
+    print(expr)
+    return parser.parse(expr)
 
-archivo = open("ejemplo.txt")
+'''archivo = open("ejemplo.txt")
 
 for linea in archivo:
     linea = linea.strip("\n")
@@ -272,4 +305,4 @@ for linea in archivo:
         except EOFError:
             break
         result = parser.parse(linea)
-        print(result)
+        print(result)'''
